@@ -1,1 +1,74 @@
-<p>register works!</p>
+<form [formGroup]="form" (submit)="register()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      formControlName="name"
+      [class.is-invalid]="
+        form.get('name')?.invalid && form.get('name')?.touched
+      "
+      [class.is-valid]="form.get('name')?.valid && form.get('name')?.touched"
+    />
+    <div class="invalid-feedback" *ngIf="angForm.name.errors?.required">
+      The Name is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      [class.is-invalid]="
+        form.get('email')?.invalid && form.get('email')?.touched
+      "
+      [class.is-valid]="form.get('email')?.valid && form.get('email')?.touched"
+    />
+    <div class="invalid-feedback" *ngIf="angForm.email.errors?.required">
+      The Email is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="pass" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      [class.is-invalid]="
+        form.get('password')?.invalid && form.get('password')?.touched
+      "
+      [class.is-valid]="
+        form.get('password')?.valid && form.get('password')?.touched
+      "
+    />
+    <div class="invalid-feedback" *ngIf="angForm.password.errors?.required">
+      The Password is required
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password_confirmation" class="form-label">Password Confirmed</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password_confirmation"
+      formControlName="password_confirmation"
+      [class.is-invalid]="
+        form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched
+      "
+      [class.is-valid]="
+        form.get('password_confirmation')?.valid && form.get('password_confirmation')?.touched
+      "
+    />
+    <div class="invalid-feedback" *ngIf="angForm.password_confirmation.errors?.required">
+      The Password Confirmed is required
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+    Submit
+  </button>
+</form>
