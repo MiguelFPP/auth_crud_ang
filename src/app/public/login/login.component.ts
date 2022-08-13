@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this._authService.login(email, password).subscribe(
       ({ user, access_token }) => {
         localStorage.setItem('token', access_token);
+        localStorage.setItem('user', JSON.stringify(user));
         this.router.navigate(['secure']);
       },
       (error) => {
