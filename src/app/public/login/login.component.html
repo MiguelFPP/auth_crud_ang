@@ -1,1 +1,37 @@
-<p>login works!</p>
+<form [formGroup]="form" (submit)="login()">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      [class.is-invalid]="
+        form.get('email')?.invalid && form.get('email')?.touched
+      "
+      [class.is-valid]="form.get('email')?.valid && form.get('email')?.touched"
+    />
+    <div class="invalid-feedback" *ngIf="angForm.email.errors?.required">
+      The Email is required
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      [class.is-invalid]="
+        form.get('password')?.invalid && form.get('password')?.touched
+      "
+      [class.is-valid]="
+        form.get('password')?.valid && form.get('password')?.touched
+      "
+    />
+    <div class="invalid-feedback" *ngIf="angForm.password.errors?.required">
+      The Password is required
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
