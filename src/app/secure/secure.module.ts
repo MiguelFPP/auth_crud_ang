@@ -8,13 +8,15 @@ import { SecureComponent } from './secure.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { AddEditProductsComponent } from './add-edit-products/add-edit-products.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoadComponent } from '../shared/load/load.component';
 
 @NgModule({
   declarations: [
     SecureComponent,
     ListProductsComponent,
     AddEditProductsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoadComponent
   ],
   imports: [CommonModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
 })

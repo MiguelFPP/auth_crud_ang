@@ -1,4 +1,7 @@
-<table class="table">
+<div class="container d-flex justify-content-center" *ngIf="load">
+  <app-load></app-load>
+</div>
+<table class="table" *ngIf="!load">
   <thead>
     <tr>
       <th scope="col">#</th>
