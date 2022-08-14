@@ -8,9 +8,19 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
-
   api: string = environment.apiUrl;
+  headers!: HttpHeaders;
+  constructor(private http: HttpClient) {
+    this.headers = this.getHeaders();
+  }
+
+  getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+  }
+
 
   login(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders().set('Accept', 'application/json');
@@ -24,5 +34,9 @@ export class AuthService {
   register(user: User): Observable<any> {
     const headers = new HttpHeaders().set('Accept', 'application/json');
     return this.http.post(`${this.api}/register`, user, { headers });
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(`${this.api}/logout`, {}, { headers: this.headers });
   }
 }

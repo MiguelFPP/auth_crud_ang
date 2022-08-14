@@ -1,1 +1,20 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Crud Auth</a>
+    <div class="d-flex items-end">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- <span class="nav-link active">Name</span>
+          <span class="nav-link active">Count items</span> -->
+          <button
+            class="nav-link active"
+            (click)="logout()"
+            aria-current="page"
+          >
+            LogOut
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
