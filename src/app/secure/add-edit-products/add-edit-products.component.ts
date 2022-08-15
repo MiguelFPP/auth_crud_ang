@@ -22,7 +22,8 @@ export class AddEditProductsComponent implements OnInit {
     private _productService: ProductsService,
     private router: Router,
     private fb: FormBuilder,
-    private aRoute: ActivatedRoute, private toastr: ToastrService
+    private aRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
@@ -72,15 +73,24 @@ export class AddEditProductsComponent implements OnInit {
   }
 
   getProduct(): void {
-    this._productService.getProduct(this.idProduct!).subscribe(({ data }) => {
-      this.form.patchValue({
-        name: data.name,
-        quantity: data.qty,
-        price: data.price,
-        description: data.description,
-      });
-      this.imageFile = environment.imageUrl + data.image;
-    });
+    this._productService.getProduct(this.idProduct!).subscribe(
+      ({ data }) => {
+        this.form.patchValue({
+          name: data.name,
+          quantity: data.qty,
+          price: data.price,
+          description: data.description,
+        });
+        this.imageFile = environment.imageUrl + data.image;
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.toastr.error('Product not found', 'Error');
+          this.router.navigate(['secure']);
+        }
+        console.log(error);
+      }
+    );
   }
 
   saveProduct(formData: FormData): void {
