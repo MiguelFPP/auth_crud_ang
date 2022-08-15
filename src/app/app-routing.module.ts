@@ -15,8 +15,8 @@ const routes: Routes = [
   ]},
   {path:'secure', component:SecureComponent, canActivate:[AuthGuard], children:[
     {path:'', component:ListProductsComponent},
-    {path:'secure/add', component:AddEditProductsComponent},
-    {path:'secure/edit/:id', component:AddEditProductsComponent}
+    {path:'add', component:AddEditProductsComponent},
+    {path:'edit/:id', component:AddEditProductsComponent}
   ]},
   {path:'**', redirectTo:''}
 ];

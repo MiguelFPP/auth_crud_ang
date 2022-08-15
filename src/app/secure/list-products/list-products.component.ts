@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ListProductsComponent implements OnInit {
   products: [] = [];
-  load:boolean = false;
+  load: boolean = false;
 
   constructor(private _productService: ProductsService) {}
 

@@ -1,3 +1,7 @@
+<div class="container">
+  <a href="" class="btn btn-primary btn-lg" routerLink="add">Add Product</a>
+</div>
+
 <div class="container d-flex justify-content-center" *ngIf="load">
   <app-load></app-load>
 </div>
@@ -19,7 +23,7 @@
       <td>{{ product["quantity"] }}</td>
       <td>{{ product["price"] }}</td>
       <td>
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary" routerLink="edit/{{product['id']}}">Edit</button>
         <button class="btn btn-danger" (click)="deleteProduct(product['id'])">
           Delete
         </button>
