@@ -17,14 +17,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <th scope="row">{{ product["id"] }}</th>
-      <td>{{ product["name"] }}</td>
-      <td>{{ product["description"] }}</td>
-      <td>{{ product["qty"] }}</td>
-      <td>{{ product["price"] }}</td>
+      <th scope="row">{{ product.id }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.qty }}</td>
+      <td>{{ product.price }}</td>
       <td>
-        <button class="btn btn-primary" routerLink="edit/{{product['id']}}">Edit</button>
-        <button class="btn btn-danger" (click)="deleteProduct(product['id'])">
+        <button class="btn btn-primary" routerLink="edit/{{product.id}}">Edit</button>
+        <button class="btn btn-danger" (click)="deleteProduct(product.id!)">
           Delete
         </button>
       </td>
