@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-edit-products',
@@ -22,7 +22,7 @@ export class AddEditProductsComponent implements OnInit {
     private _productService: ProductsService,
     private router: Router,
     private fb: FormBuilder,
-    private aRoute: ActivatedRoute
+    private aRoute: ActivatedRoute, private toastr: ToastrService
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
@@ -86,10 +86,12 @@ export class AddEditProductsComponent implements OnInit {
   saveProduct(formData: FormData): void {
     this._productService.addProduct(formData).subscribe(
       (data) => {
+        this.toastr.success('Product added successfully', 'Success');
         this.router.navigate(['secure']);
       },
       (error) => {
         console.log(error);
+        this.toastr.error('Error adding product', 'Error');
       }
     );
   }
@@ -97,10 +99,11 @@ export class AddEditProductsComponent implements OnInit {
   updateProduct(formData: FormData): void {
     this._productService.updateProduct(this.idProduct!, formData).subscribe(
       (data) => {
-        console.log(data);
+        this.toastr.success('Product updated successfully', 'Success');
         this.router.navigate(['secure']);
       },
       (error) => {
+        this.toastr.error('Error updating product', 'Error');
         console.log(error);
       }
     );
