@@ -64,10 +64,7 @@
       "
       [class.is-valid]="form.get('price')?.valid && form.get('price')?.touched"
     />
-    <div
-      class="invalid-feedback"
-      *ngIf="angForm.price.errors?.required"
-    >
+    <div class="invalid-feedback" *ngIf="angForm.price.errors?.required">
       The Price is required
     </div>
   </div>
@@ -79,21 +76,21 @@
       class="form-control"
       id="image"
       accept="image/png, image/gif, image/jpeg, /image/jpg"
-      
       (change)="uploadImage($event)"
       [class.is-invalid]="
         form.get('image')?.invalid && form.get('image')?.touched
       "
       [class.is-valid]="form.get('image')?.valid && form.get('image')?.touched"
     />
-    <div
-      class="invalid-feedback"
-      *ngIf="angForm.image.errors?.required"
-    >
+    <div class="invalid-feedback" *ngIf="angForm.image.errors?.required">
       The Image is required
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+  <!-- camp for show image -->
+  <div class="mb-3 d-flex justify-content-center" *ngIf="imageFile !== ''">
+    <img [src]="imageFile" alt="image" class="img-thumbnail" style="width: 200px;"/>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3" [disabled]="form.invalid">
     Submit
   </button>
 </form>

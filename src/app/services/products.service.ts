@@ -17,7 +17,7 @@ export class ProductsService {
 
   getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      'Accept': 'application/json',
+      Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
   }
@@ -26,8 +26,20 @@ export class ProductsService {
     return this.http.get(`${this.api}/products`, { headers: this.headers });
   }
 
+  getProduct(id: number): Observable<any> {
+    return this.http.get(`${this.api}/products/${id}`, {
+      headers: this.headers,
+    });
+  }
+
   addProduct(product: any): Observable<any> {
     return this.http.post(`${this.api}/products`, product, {
+      headers: this.headers,
+    });
+  }
+
+  updateProduct(id: number, product: any): Observable<any> {
+    return this.http.post(`${this.api}/products/${id}`, product, {
       headers: this.headers,
     });
   }
