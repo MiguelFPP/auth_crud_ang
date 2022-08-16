@@ -1,5 +1,6 @@
 # AuthCrud
 
+This project uses a small api that I created with authentication from Laravel Passport. [API](https://github.com/MiguelFPP/crud_auth_lar)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
 ## Development server
